@@ -1,4 +1,4 @@
-package by.guru13.linkedList;
+package guru13.linkedList;
 
 import java.util.ArrayList;
 
@@ -85,16 +85,21 @@ public class LinkedList {
     return this.size;
   }
 
-  public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
-    if (_nodeAfter == null) {
-      _nodeToInsert.next = this.head;
-      this.head = _nodeToInsert;
-    } else {
-      _nodeToInsert.next = _nodeAfter.next;
-      _nodeAfter.next = _nodeToInsert;
+    public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
+        if (this.head == null) {
+            this.head = _nodeToInsert;
+            _nodeToInsert.next = null;
+        } else {
+            if (_nodeAfter == null) {
+                _nodeToInsert.next = this.head;
+                this.head = _nodeToInsert;
+            } else {
+                _nodeToInsert.next = _nodeAfter.next;
+                _nodeAfter.next = _nodeToInsert;
+            }
+        }
+        size++;
     }
-    size++;
-  }
 
   public LinkedList joinLists(LinkedList first, LinkedList second) {
     if (first.count() == second.count()) {
