@@ -81,6 +81,20 @@ public class LinkedListTest {
     linkedList.insertAfter(null, node);
     assertEquals(1, linkedList.count());
     assertEquals(5, linkedList.find(5).value);
+    LinkedList linkedListEmpty = new LinkedList();
+    linkedListEmpty.insertAfter(null, node);
+    assertEquals(1, linkedListEmpty.count());
+    assertEquals(5, linkedListEmpty.find(5).value);
+    assertEquals(5, linkedListEmpty.head.value);
+    assertEquals(node, linkedListEmpty.head);
+
+    //if _nodeAfter is not in linkedList
+    LinkedList linkedListEmpty2 = new LinkedList();
+    linkedListEmpty2.insertAfter(new Node(4), node);
+    assertEquals(0, linkedListEmpty2.count());
+    assertNull(linkedListEmpty2.find(5));
+    assertNull(linkedListEmpty2.head);
+
   }
 
   @Test

@@ -86,12 +86,32 @@ public class LinkedList {
   }
 
   public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
-    if (_nodeAfter == null) {
-      _nodeToInsert.next = this.head;
+    if (_nodeToInsert == null ||_nodeAfter == _nodeToInsert) return;
+    Node prevNode = null;
+    Node cpNode = this.head;
+    while (cpNode != null) {
+      if (cpNode == _nodeAfter) {
+        prevNode = _nodeAfter;
+        break;
+      }
+      cpNode = cpNode.next;
+    }
+
+    if (_nodeAfter != null && prevNode == null) return;
+    if (this.head == null) {
       this.head = _nodeToInsert;
+      this.tail = _nodeToInsert;
     } else {
-      _nodeToInsert.next = _nodeAfter.next;
-      _nodeAfter.next = _nodeToInsert;
+      if (_nodeAfter == null) {
+        _nodeToInsert.next = this.head;
+        this.head = _nodeToInsert;
+      } else {
+        _nodeToInsert.next = _nodeAfter.next;
+        _nodeAfter.next = _nodeToInsert;
+        if (_nodeAfter == this.tail) {
+          this.tail = _nodeToInsert;
+        }
+      }
     }
     size++;
   }
@@ -122,5 +142,10 @@ class Node
   {
     value = _value;
     next = null;
+  }
+
+  @Override
+  public String toString() {
+    return value + " - "  ;
   }
 }
