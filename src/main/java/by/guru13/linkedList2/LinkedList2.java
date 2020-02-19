@@ -136,11 +136,14 @@ public class LinkedList2
       } else {
         _nodeToInsert.next = _nodeAfter.next;
         _nodeToInsert.prev = _nodeAfter;
-        _nodeAfter.next.prev = _nodeToInsert;
-        _nodeAfter.next = _nodeToInsert;
+
+
         if (_nodeAfter == this.tail) {
           this.tail = _nodeToInsert;
+        } else {
+          _nodeAfter.next.prev = _nodeToInsert;
         }
+        _nodeAfter.next = _nodeToInsert;
       }
     }
     size++;

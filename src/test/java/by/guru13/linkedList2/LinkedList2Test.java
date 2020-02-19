@@ -79,6 +79,8 @@ public class LinkedList2Test {
     Node node6 = new  Node(6);
     linkedList2.addInTail(node6);
     assertTrue(linkedList2.contains(node6));
+    assertFalse(linkedList2.contains(null));
+
   }
 
   @Test
