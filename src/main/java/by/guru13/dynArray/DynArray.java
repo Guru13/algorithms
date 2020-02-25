@@ -1,5 +1,8 @@
 package by.guru13.dynArray;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class DynArray<T>
 {
     public T [] array;
@@ -20,12 +23,19 @@ public class DynArray<T>
     {
         // array = (T[]) Array.newInstance(this.clazz, new_capacity);
         // ваш код
+
+        if(array == null) {
+            array = (T[]) Array.newInstance(this.clazz, new_capacity);
+        } else {
+            array = Arrays.copyOf(array, new_capacity);
+        }
+
     }
 
     public T getItem(int index)
     {
         // ваш код
-        return null;
+        return array[index];
     }
 
     public void append(T itm)
