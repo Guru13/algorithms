@@ -29,28 +29,66 @@ public class DynArray<T>
         } else {
             array = Arrays.copyOf(array, new_capacity);
         }
-
+        capacity = array.length;
     }
 
     public T getItem(int index)
     {
         // ваш код
+        if (index >= array.length) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
         return array[index];
     }
 
     public void append(T itm)
     {
-        // ваш код
+        if (count == array.length) {
+            makeArray(count * 2);
+        }
+        array[count] = itm;
+        count++;
     }
 
     public void insert(T itm, int index)
     {
-        // ваш код
+        if (index > count) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        if (index == count) {
+            append(itm);
+            return;
+        }
+        if (count == array.length) {
+            makeArray(count * 2);
+        }
+        T[] secondArray = Arrays.copyOfRange(array, index, count);
+        array[index] = itm;
+        System.arraycopy(secondArray, 0, array,  index+1, secondArray.length);
+        count++;
     }
 
     public void remove(int index)
     {
-        // ваш код
+        if (index >= count) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+//        array[index] = null;
+        if (index != (count-1)) {
+            T[] secondArray = Arrays.copyOfRange(array, index+1, count);
+            System.arraycopy(secondArray, 0, array,  index, secondArray.length);
+            array[count-1] = null;
+        } else {
+            array[index] = null;
+        }
+        count--;
+        if ((count) < array.length/2) {
+            int new_capacity = (int) (array.length/1.5);
+            if (new_capacity < 16) {
+                new_capacity = 16;
+            }
+            makeArray(new_capacity);
+        }
     }
 
 }
