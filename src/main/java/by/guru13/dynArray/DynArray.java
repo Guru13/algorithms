@@ -73,7 +73,6 @@ public class DynArray<T>
         if (index >= count) {
             throw new ArrayIndexOutOfBoundsException();
         }
-//        array[index] = null;
         if (index != (count-1)) {
             T[] secondArray = Arrays.copyOfRange(array, index+1, count);
             System.arraycopy(secondArray, 0, array,  index, secondArray.length);
