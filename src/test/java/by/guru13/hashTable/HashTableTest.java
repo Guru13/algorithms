@@ -22,7 +22,7 @@ public class HashTableTest {
 
     @Test
     public void seekSlot() {
-        for (int i=0; i <= 18; i++) {
+        for (int i = 0; i <= 18; i++) {
             hashTable.put("hello world " + i);
         }
         assertEquals(-1, hashTable.seekSlot("hello world 19"));
@@ -30,7 +30,7 @@ public class HashTableTest {
 
     @Test
     public void put() {
-        for (int i=0; i <= 18; i++) {
+        for (int i = 0; i <= 18; i++) {
             hashTable.put("hello world " + i);
         }
         assertEquals(-1, hashTable.put("hello world 19"));
@@ -56,9 +56,12 @@ public class HashTableTest {
 
     @Test
     public void find() {
-        for (int i=0; i <= 18; i++) {
+        for (int i = 0; i <= 18; i++) {
             hashTable.put("hello world " + i);
         }
         assertEquals(7, hashTable.find("hello world 8"));
+        assertEquals(9, hashTable.find("hello world 11"));
+        assertEquals(-1, hashTable.find("hello world 138"));
+        assertEquals(-1, hashTable.find("hello world 19"));
     }
 }

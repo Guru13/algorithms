@@ -28,7 +28,7 @@ public class HashTable {
         int idx = hashFun(value);
         if (slots[idx] == null || slots[idx].equals(value)) return idx;
         int circleCount = slots.length;
-        while ((slots[idx] != null) && circleCount != 0) {
+        while (slots[idx] != null && circleCount != 0) {
             idx = idx + step;
             if (idx > slots.length - 1) {
                 idx = slots.length - circleCount;
@@ -57,7 +57,7 @@ public class HashTable {
         int idx = hashFun(value);
         if (slots[idx].equals(value)) return idx;
         int circleCount = slots.length;
-        while (!slots[idx].equals(value) || idx < slots.length - 1 || circleCount == 0) {
+        while (!slots[idx].equals(value) && circleCount != 0) {
             idx = idx + step;
             if (idx > slots.length - 1) {
                 idx = slots.length - circleCount;
