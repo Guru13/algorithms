@@ -26,9 +26,9 @@ public class PowerSetTest {
         assertTrue(powerSet.get("hello world 10"));
         assertEquals(8, powerSet.size);
         assertFalse(powerSet.get("hello world 9"));
-        for (String str : powerSet.slots) {
-            System.out.println("hash table str===" + str);
-        }
+//        for (String str : powerSet.slots) {
+//            System.out.println("hash table str===" + str);
+//        }
 //        powerSet.put(null);
     }
 
