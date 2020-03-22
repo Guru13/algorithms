@@ -32,8 +32,8 @@ public class HashTable {
             idx = idx + step;
             if (idx > slots.length - 1) {
                 idx = slots.length - circleCount;
+                circleCount--;
             }
-            circleCount--;
         }
         if (slots[idx] == null) {
             return idx;
@@ -61,8 +61,9 @@ public class HashTable {
             idx = idx + step;
             if (idx > slots.length - 1) {
                 idx = slots.length - circleCount;
+                circleCount--;
             }
-            circleCount--;
+
         }
         if (slots[idx] != null && slots[idx].equals(value)) {
             return idx;
