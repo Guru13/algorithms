@@ -11,7 +11,7 @@ public class PowerSet {
         // ваша реализация хранилища
         step = 3;
         size = 0;
-        slots = new String[19];
+        slots = new String[20000];
     }
 
     public int size() {
