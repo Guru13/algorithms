@@ -63,12 +63,32 @@ public class PowerSetTest {
     @Test
     public void remove() {
         for (int i = 0; i <= 10; i++) {
-            powerSet.put("hello world " + i);
+            powerSet.put("" + i);
         }
         assertEquals(11, powerSet.size);
-        assertTrue(powerSet.remove("hello world 9"));
-        assertFalse(powerSet.remove("hello world 11"));
+        assertTrue(powerSet.remove("9"));
+        assertFalse(powerSet.remove("9"));
+        assertFalse(powerSet.remove("11"));
+
         assertEquals(10, powerSet.size);
+
+        assertTrue(powerSet.remove("0"));
+        assertTrue(powerSet.remove("1"));
+        assertFalse(powerSet.remove("0"));
+        assertFalse(powerSet.remove("1"));
+        assertFalse(powerSet.remove(null));
+
+        assertEquals(8, powerSet.size);
+    }
+
+    @Test
+    public void removeAll() {
+        for (int i = 0; i < powerSet.slots.length; i++) {
+            powerSet.put("" + i);
+        }
+        for (String str : powerSet.slots) {
+            assertTrue(powerSet.remove(str));
+        }
     }
 
     @Test

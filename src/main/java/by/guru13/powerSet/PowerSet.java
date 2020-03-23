@@ -97,14 +97,23 @@ public class PowerSet {
     public boolean remove(String value) {
         // возвращает true если value удалено
         // иначе false
-        int idx = find(value);
-        if(idx != -1) {
-            slots[idx] = null;
-            size--;
-            return true;
-        } else {
-            return false;
+        if (value == null) return false;
+//        int idx = find(value);
+//        if(idx != -1) {
+//            slots[idx] = null;
+//            size--;
+//            return true;
+//        } else {
+//            return false;
+//        }
+        for (int i = 0; i < slots.length; i++) {
+            if (value.equals(slots[i])) {
+                slots[i] = null;
+                size--;
+                return true;
+            }
         }
+        return false;
     }
 
     public PowerSet intersection(PowerSet set2) {
