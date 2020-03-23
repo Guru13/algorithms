@@ -135,8 +135,14 @@ public class PowerSet {
 
     public PowerSet union(PowerSet set2) {
         // объединение текущего множества и set2
-        PowerSet unionSet = this;
+        PowerSet unionSet = new PowerSet();
+        unionSet.slots = new String[set2.slots.length + this.slots.length];
         for (String str : set2.slots) {
+            if (str != null) {
+                unionSet.put(str);
+            }
+        }
+        for (String str : this.slots) {
             if (str != null) {
                 unionSet.put(str);
             }

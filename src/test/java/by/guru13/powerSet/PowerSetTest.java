@@ -195,6 +195,25 @@ public class PowerSetTest {
     }
 
     @Test
+    public void union2() {
+        PowerSet set2 = new PowerSet();
+        for (int i = 0; i < 301; i++) {
+            powerSet.put("" + i);
+        }
+        for (int i = 150; i < 601; i++) {
+            set2.put("" + i);
+        }
+        PowerSet unionSet = powerSet.union(set2);
+        for (int i = 0; i < 601; i++) {
+            assertTrue(unionSet.get("" + i));
+        }
+        for (int i = 601; i < 700; i++) {
+            assertFalse(unionSet.get("" + i));
+        }
+        assertEquals(601, unionSet.size);
+    }
+
+    @Test
     public void unionEmpty() {
         PowerSet set2 = new PowerSet();
         powerSet.put("10");
