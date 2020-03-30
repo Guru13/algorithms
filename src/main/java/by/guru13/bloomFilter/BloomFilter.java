@@ -2,14 +2,11 @@ package by.guru13.bloomFilter;
 
 public class BloomFilter {
     public int filter_len;
-    public int[] blumArray;
+    public int bitMask;
 
     public BloomFilter(int f_len) {
         filter_len = f_len;
-        blumArray = new int[f_len];
-        for (int i = 0; i < f_len; i++) {
-            blumArray[i] = 0;
-        }
+        bitMask = 0;
         // создаём битовый массив длиной f_len ...
     }
 
@@ -35,13 +32,15 @@ public class BloomFilter {
     }
 
     public void add(String str1) {
-        blumArray[hash1(str1)] = 1;
-        blumArray[hash2(str1)] = 1;
+        bitMask = bitMask | (1<<hash1(str1));
+        bitMask = bitMask | (1<<hash2(str1));
         // добавляем строку str1 в фильтр
     }
 
     public boolean isValue(String str1) {
         // проверка, имеется ли строка str1 в фильтре
-        return blumArray[hash1(str1)] == 1 && blumArray[hash2(str1)] == 1;
+        int val1 = 1<<hash1(str1);
+        int val2 = 1<<hash2(str1);
+        return (bitMask & (val1)) == (val1) && (bitMask & (val2)) == (val2) ;
     }
 }

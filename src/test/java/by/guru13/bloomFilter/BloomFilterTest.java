@@ -47,5 +47,9 @@ public class BloomFilterTest {
         assertTrue(filter.isValue("7890123456"));
         assertTrue(filter.isValue("8901234567"));
         assertTrue(filter.isValue("9012345678"));
+
+        assertFalse(filter.isValue("hello2"));
+        assertFalse(filter.isValue("hello3"));
+        assertFalse(filter.isValue("hello4"));
     }
 }
